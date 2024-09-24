@@ -27,7 +27,7 @@ public class Task4 {
         System.out.println("sumTemp: " + sumTemp);
 
 
-        // Todo Разобраться с потерей дробной части
+
 
         // 141 / 7 = 20 и 1 в остатке
         // 141.0 / 7.0 = 20.142 (double)
