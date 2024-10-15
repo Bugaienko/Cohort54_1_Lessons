@@ -21,6 +21,7 @@ public class MethodsExample {
         System.out.println("\n==============");
 
         printChars(string);
+
         System.out.println("\n==============");
         printChars("Python!!!");
 
