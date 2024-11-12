@@ -6,8 +6,8 @@ package homework_17;
  */
 
 public class MagicArrayEncap {
-    int[] array;
-    int cursor; // присвоено значение по умолчание - 0;
+    private int[] array;
+    private int cursor; // присвоено значение по умолчание - 0;
 
     public MagicArrayEncap() {
         array = new int[10];
@@ -25,7 +25,7 @@ public class MagicArrayEncap {
     }
 
     // Добавление в массив одного элемента
-    void add(int value) {
+    public void add(int value) {
 
         // Проверка. Есть ли свободное места во внутреннем массиве
         // Если места нет - нужно добавить место
@@ -40,7 +40,7 @@ public class MagicArrayEncap {
     }
 
     // Динамическое расширение массива
-    void expandArray() {
+    private void expandArray() {
         System.out.println("Расширяем массив! cursor: " + cursor);
         /*
         1. Создать массив бОльшего размера (в 2 раза больше)
@@ -62,9 +62,7 @@ public class MagicArrayEncap {
     }
 
 
-
-
-    void addAll(int... values) {
+    public void addAll(int... values) {
         // с values я могу обращаться точно также, как со ссылкой на массив int
 //        System.out.println("Мы приняли несколько int-ов. А именно: " + values.length);
 //        System.out.println("У каждого значения есть индекс. По индексом 0: " + values[0]);
@@ -75,7 +73,7 @@ public class MagicArrayEncap {
     }
 
     // Удаление элемента по индексу
-    int remove(int index) {
+    public int remove(int index) {
         /*
         1. Проверить валидность индекса (что он не отрицательный и меньше курсора
         2. Запомнить, какое значение находилось под этим индексом
@@ -95,7 +93,7 @@ public class MagicArrayEncap {
         // 3, 4
         // индекс 11, курсор = 12
         //for (int i = 11; i <  12 - 1; i++) {
-        for (int i = index; i <  cursor - 1; i++) {
+        for (int i = index; i < cursor - 1; i++) {
             array[i] = array[i + 1];
         }
         // 5.
@@ -105,16 +103,14 @@ public class MagicArrayEncap {
     }
 
 
-
-
     // Текущее количество элементов в массиве
-    int size() {
+    public int size() {
         return cursor;
     }
 
     // Возвращает значение по индексу
-    int get(int index) {
-        if (index >=0 && index < cursor) {
+    public int get(int index) {
+        if (index >= 0 && index < cursor) {
             // Валидный индекс
             return array[index];
         }
@@ -127,9 +123,9 @@ public class MagicArrayEncap {
     // [10, 100, 44, 100, 453, 100, 34]
     // Поиск первого вхождения элемента по значению
     // Возвращает индекс элемента. Если значение не найдено возвращает -1 (не существующий индекс для любого массива)
-    int indexOf(int value) {
+    public int indexOf(int value) {
         for (int i = 0; i < cursor; i++) {
-            if(array[i] == value) {
+            if (array[i] == value) {
                 // нашли
                 return i;
             }
@@ -139,19 +135,30 @@ public class MagicArrayEncap {
     }
 
     // Поиск последнего вхождения элемента по значению
-    int lastIndexOf(int value) {
-        //Todo homework
+    public int lastIndexOf(int value) {
+
+
+        for (int i = cursor - 1; i >= 0; i--) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
         return -1;
     }
 
     //  возвращает все значения в виде обычного массива
-    int[] toArray() {
-        // Todo Homework
-        return null;
+    public int[] toArray() {
+       int[] result = new int[cursor];
+
+        for (int i = 0; i < cursor; i++) {
+            result[i] = array[i];
+        }
+
+        return result;
     }
 
     // Удаление элемента по значению
-    boolean removeByValue(int value) {
+    public boolean removeByValue(int value) {
         /*
         1. Есть ли у нас такой элемент в массиве?
         2. Если нет - то вернуть false
@@ -171,7 +178,7 @@ public class MagicArrayEncap {
     }
 
     // Замена значения по индексу - возвращает старое значение
-    int set(int index, int newValue) {
+    public int set(int index, int newValue) {
         /*
         1. Валидация индекса 0...cursor
         2. Вытащить старое значение - запомнить
@@ -189,7 +196,6 @@ public class MagicArrayEncap {
         array[index] = newValue;
         return oldValue;
     }
-
 
 
     // Возвращает строковое представление массива
