@@ -23,6 +23,7 @@ public class FinalDemo {
         ints[0] = 100;
         ints[0] = 200;
         ints[5] = 300;
+
     }
 
     // Параметры метода тоже можно пометить как final
