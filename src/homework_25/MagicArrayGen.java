@@ -1,31 +1,31 @@
-package homework_17;
+package homework_25;
 
 /**
  * @author Sergey Bugaenko
  * {@code @date} 05.11.2024
  */
 
-public class MagicArrayEncap  {
-    private int[] array;
+public class MagicArrayGen <T> {
+    private T[] array;
     private int cursor; // присвоено значение по умолчание - 0;
 
-    public MagicArrayEncap() {
-        array = new int[10];
+    public MagicArrayGen() {
+        array = (T[]) new Object[10];
     }
 
-    public MagicArrayEncap(int[] ints) {
+    public MagicArrayGen(int[] ints) {
 
         if (ints != null) {
-            this.array = new int[ints.length * 2];
+            this.array = (T[]) new Object[ints.length * 2];
             addAll(ints);
         } else {
-            this.array = new int[10];
+            this.array = (T[]) new Object[10];
         }
 
     }
 
     // Добавление в массив одного элемента
-    public void add(int value) {
+    public void add(T value) {
 
         // Проверка. Есть ли свободное места во внутреннем массиве
         // Если места нет - нужно добавить место
